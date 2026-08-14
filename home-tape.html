@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence BR-01 - HOME</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #202122;
+    }
+
+    a {
+      color: #3366cc;
+      text-decoration: none;
+    }
+
+    .topbar {
+      border-bottom: 1px solid #a2a9b1;
+      padding: 18px 30px;
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .sidebar {
+      background: #f8f9fa;
+      min-height: 100vh;
+      border-right: 1px solid #c8ccd1;
+      padding: 30px 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .content {
+      max-width: 850px;
+      padding: 40px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      border-bottom: 1px solid #a2a9b1;
+    }
+
+    .evidence {
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      padding: 25px;
+      margin-top: 25px;
+    }
+
+    .cassette {
+      width: 280px;
+      background: #171717;
+      padding: 40px 25px;
+      margin: 30px auto;
+      border-radius: 10px;
+    }
+
+    .label {
+      background: #e7dfbf;
+      text-align: center;
+      padding: 15px;
+      font-family: "Courier New", monospace;
+      font-size: 28px;
+      transform: rotate(-1deg);
+    }
+
+    .transcript {
+      background: white;
+      border: 1px solid #c8ccd1;
+      padding: 20px;
+      font-family: "Courier New", monospace;
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 10px 18px;
+      cursor: pointer;
+    }
+
+    #hidden-message {
+      display: none;
+      background: #fff3cd;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    BLACK RIDGE CASE WIKI
+  </div>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+      <a href="index.html">Main Page</a>
+      <a href="static-tapes.html">The Static Tapes</a>
+    </aside>
+
+    <main class="content">
+
+      <h1>Evidence BR-01</h1>
+
+      <p>
+        Black Ridge County Sheriff's Department Digital Archive
+      </p>
+
+      <div class="evidence">
+
+        <p><strong>TYPE:</strong> Compact cassette</p>
+        <p><strong>LABEL:</strong> HOME</p>
+        <p><strong>STATUS:</strong> Archived</p>
+
+        <div class="cassette">
+          <div class="label">HOME</div>
+        </div>
+
+        <h2>Archived Audio</h2>
+
+        <button onclick="playTape()">▶ Play recording</button>
+
+        <p id="status">
+          00:00 / 04:17
+        </p>
+
+        <div class="transcript">
+          <strong>OFFICIAL TRANSCRIPT</strong>
+
+          <p>03:36 — [STATIC]</p>
+
+          <p>
+            03:42 — [UNINTELLIGIBLE]
+          </p>
+
+          <p id="hidden-message">
+            Possible voice detected:
+            "there was someone else listening"
+          </p>
+
+          <p>03:51 — [STATIC]</p>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    function playTape() {
+      document.getElementById("status").textContent =
+        "03:42 / 04:17";
+
+      setTimeout(function() {
+        document.getElementById("hidden-message").style.display = "block";
+      }, 1800);
+    }
+  </script>
+
+</body>
+</html>
