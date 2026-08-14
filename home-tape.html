@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,10 @@
     a {
       color: #3366cc;
       text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     .topbar {
@@ -53,7 +58,15 @@
     h1 {
       font-family: Georgia, serif;
       font-weight: normal;
+      font-size: 38px;
       border-bottom: 1px solid #a2a9b1;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      color: #54595d;
+      font-size: 13px;
+      margin-bottom: 25px;
     }
 
     .evidence {
@@ -63,21 +76,79 @@
       margin-top: 25px;
     }
 
-    .cassette {
-      width: 280px;
-      background: #171717;
-      padding: 40px 25px;
-      margin: 30px auto;
-      border-radius: 10px;
+    .metadata {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px;
+      margin-bottom: 25px;
     }
 
-    .label {
+    .cassette {
+      width: 300px;
+      background: #171717;
+      padding: 42px 25px;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 5px #333;
+    }
+
+    .cassette-label {
       background: #e7dfbf;
       text-align: center;
-      padding: 15px;
+      padding: 16px;
       font-family: "Courier New", monospace;
       font-size: 28px;
       transform: rotate(-1deg);
+    }
+
+    .audio-panel {
+      margin-top: 35px;
+    }
+
+    .waveform {
+      height: 75px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      overflow: hidden;
+      padding: 8px;
+      margin: 12px 0;
+      position: relative;
+    }
+
+    .waveform span {
+      width: 3px;
+      background: #999;
+      flex-shrink: 0;
+    }
+
+    .playhead {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: white;
+      left: 0%;
+      pointer-events: none;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 9px 16px;
+      cursor: pointer;
+      border: 1px solid #72777d;
+      background: #f8f9fa;
+    }
+
+    button:hover {
+      background: #eaecf0;
     }
 
     .transcript {
@@ -85,18 +156,78 @@
       border: 1px solid #c8ccd1;
       padding: 20px;
       font-family: "Courier New", monospace;
-      margin-top: 25px;
+      margin-top: 30px;
     }
 
-    button {
-      padding: 10px 18px;
-      cursor: pointer;
-    }
-
-    #hidden-message {
+    .hidden-message {
       display: none;
       background: #fff3cd;
-      padding: 5px;
+      padding: 8px;
+      border-left: 4px solid #ac8d00;
+    }
+
+    .clue-link {
+      display: none;
+      margin-top: 25px;
+      padding: 15px;
+      border: 1px solid #a2a9b1;
+      background: white;
+    }
+
+    .notification {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      background: #202122;
+      color: white;
+      padding: 15px 18px;
+      display: none;
+      max-width: 320px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+    }
+
+    .static-flash {
+      animation: staticFlash 0.15s steps(2) 5;
+    }
+
+    @keyframes staticFlash {
+      0% {
+        filter: none;
+      }
+
+      25% {
+        filter: contrast(1.6);
+      }
+
+      50% {
+        filter: brightness(1.4);
+      }
+
+      75% {
+        filter: contrast(0.7);
+      }
+
+      100% {
+        filter: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .layout {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .cassette {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -112,49 +243,98 @@
     <aside class="sidebar">
       <a href="index.html">Main Page</a>
       <a href="static-tapes.html">The Static Tapes</a>
+      <a href="#">The Quiet Room</a>
+      <a href="#">Natalie Halverson</a>
+      <a href="#">Unheard Podcast</a>
+      <a href="#">Evidence Archive</a>
     </aside>
 
     <main class="content">
 
       <h1>Evidence BR-01</h1>
 
-      <p>
+      <div class="subtitle">
         Black Ridge County Sheriff's Department Digital Archive
-      </p>
+      </div>
 
       <div class="evidence">
 
-        <p><strong>TYPE:</strong> Compact cassette</p>
-        <p><strong>LABEL:</strong> HOME</p>
-        <p><strong>STATUS:</strong> Archived</p>
+        <div class="metadata">
+          <strong>TYPE:</strong>
+          <span>Compact cassette</span>
 
-        <div class="cassette">
-          <div class="label">HOME</div>
+          <strong>LABEL:</strong>
+          <span>HOME</span>
+
+          <strong>STATUS:</strong>
+          <span>Archived</span>
+
+          <strong>CASE:</strong>
+          <span>BR-2011-044</span>
+
+          <strong>RECOVERED:</strong>
+          <span>Private residence</span>
         </div>
 
-        <h2>Archived Audio</h2>
+        <div class="cassette">
+          <div class="cassette-label">
+            HOME
+          </div>
+        </div>
 
-        <button onclick="playTape()">▶ Play recording</button>
+        <div class="audio-panel">
 
-        <p id="status">
-          00:00 / 04:17
-        </p>
+          <h2>Archived Audio</h2>
+
+          <div class="waveform" id="waveform">
+            <div class="playhead" id="playhead"></div>
+          </div>
+
+          <div class="controls">
+
+            <button id="playButton" onclick="toggleTape()">
+              ▶ Play
+            </button>
+
+            <span id="status">
+              00:00 / 04:17
+            </span>
+
+          </div>
+
+        </div>
 
         <div class="transcript">
+
           <strong>OFFICIAL TRANSCRIPT</strong>
 
           <p>03:36 — [STATIC]</p>
 
-          <p>
+          <p id="official-line">
             03:42 — [UNINTELLIGIBLE]
           </p>
 
-          <p id="hidden-message">
-            Possible voice detected:
+          <p class="hidden-message" id="hidden-message">
+            POSSIBLE VOICE DETECTED:<br><br>
             "there was someone else listening"
           </p>
 
           <p>03:51 — [STATIC]</p>
+
+        </div>
+
+        <div class="clue-link" id="clue-link">
+
+          <strong>Related record detected</strong>
+
+          <p>
+            This phrase appears in another archived case file.
+          </p>
+
+          <a href="natalie-halverson.html">
+            → Natalie Halverson
+          </a>
+
         </div>
 
       </div>
@@ -163,16 +343,124 @@
 
   </div>
 
+  <div class="notification" id="notification">
+    INVESTIGATION NOTE ADDED<br>
+    HOME TAPE — 03:42
+  </div>
+
   <script>
-    function playTape() {
-      document.getElementById("status").textContent =
-        "03:42 / 04:17";
+    const waveform = document.getElementById("waveform");
+
+    for (let i = 0; i < 170; i++) {
+      const bar = document.createElement("span");
+
+      const height = Math.floor(Math.random() * 55) + 6;
+
+      bar.style.height = height + "px";
+
+      waveform.appendChild(bar);
+    }
+
+    let playing = false;
+    let progress = 0;
+    let interval;
+
+    function toggleTape() {
+      if (playing) {
+        stopTape();
+      } else {
+        startTape();
+      }
+    }
+
+    function startTape() {
+      playing = true;
+
+      document.getElementById("playButton").textContent =
+        "⏸ Pause";
+
+      interval = setInterval(function() {
+
+        progress += 1;
+
+        const percent = progress / 100;
+
+        document.getElementById("playhead").style.left =
+          progress + "%";
+
+        const fakeSeconds =
+          Math.floor(percent * 257);
+
+        const minutes =
+          Math.floor(fakeSeconds / 60);
+
+        const seconds =
+          fakeSeconds % 60;
+
+        document.getElementById("status").textContent =
+          String(minutes).padStart(2, "0") +
+          ":" +
+          String(seconds).padStart(2, "0") +
+          " / 04:17";
+
+        if (progress === 86) {
+          revealMessage();
+        }
+
+        if (progress >= 100) {
+          stopTape();
+          progress = 0;
+
+          document.getElementById("playhead").style.left =
+            "0%";
+        }
+
+      }, 60);
+    }
+
+    function stopTape() {
+      playing = false;
+
+      clearInterval(interval);
+
+      document.getElementById("playButton").textContent =
+        "▶ Play";
+    }
+
+    function revealMessage() {
+      document.body.classList.add("static-flash");
 
       setTimeout(function() {
-        document.getElementById("hidden-message").style.display = "block";
-      }, 1800);
+        document.body.classList.remove("static-flash");
+      }, 800);
+
+      document.getElementById("official-line").style.textDecoration =
+        "line-through";
+
+      document.getElementById("hidden-message").style.display =
+        "block";
+
+      document.getElementById("clue-link").style.display =
+        "block";
+
+      const notification =
+        document.getElementById("notification");
+
+      notification.style.display =
+        "block";
+
+      setTimeout(function() {
+        notification.style.display =
+          "none";
+      }, 4500);
+
+      localStorage.setItem(
+        "homeTapeDiscovered",
+        "true"
+      );
     }
   </script>
 
 </body>
 </html>
+```
