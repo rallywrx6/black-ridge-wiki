@@ -1,228 +1,71 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Static Tapes - Black Ridge Case Wiki</title>
-
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #ffffff;
-      color: #202122;
-    }
-
-    a {
-      color: #3366cc;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .topbar {
-      border-bottom: 1px solid #a2a9b1;
-      padding: 18px 30px;
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .logo {
-      font-family: Georgia, serif;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .sidebar {
-      background: #f8f9fa;
-      min-height: 100vh;
-      border-right: 1px solid #c8ccd1;
-      padding: 30px 20px;
-    }
-
-    .sidebar a {
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    .content {
-      max-width: 900px;
-      padding: 40px;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: 38px;
-      border-bottom: 1px solid #a2a9b1;
-      margin-bottom: 5px;
-    }
-
-    h2 {
-      font-family: Georgia, serif;
-      font-weight: normal;
-      border-bottom: 1px solid #c8ccd1;
-      margin-top: 35px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 25px;
-    }
-
-    th,
-    td {
-      padding: 10px;
-      border: 1px solid #a2a9b1;
-      text-align: left;
-    }
-
-    th {
-      background: #eaecf0;
-    }
-
-    .subtitle {
-      font-size: 13px;
-      color: #54595d;
-      margin-bottom: 25px;
-    }
-
-    .notice {
-      margin-top: 30px;
-      padding: 12px;
-      background: #f8f9fa;
-      border: 1px solid #a2a9b1;
-      font-size: 14px;
-    }
-
-    @media (max-width: 700px) {
-      .layout {
-        display: block;
-      }
-
-      .sidebar {
-        display: none;
-      }
-
-      .content {
-        padding: 20px;
-      }
-    }
+    body { margin:0; font-family:Arial,Helvetica,sans-serif; background:#fff; color:#202122; }
+    a { color:#3366cc; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .topbar { border-bottom:1px solid #a2a9b1; padding:18px 30px; display:flex; align-items:center; gap:30px; }
+    .logo { font-family:Georgia,serif; font-size:22px; font-weight:bold; }
+    .layout { display:grid; grid-template-columns:220px 1fr; max-width:1200px; margin:auto; }
+    .sidebar { background:#f8f9fa; min-height:100vh; border-right:1px solid #c8ccd1; padding:30px 20px; }
+    .sidebar a { display:block; margin-bottom:12px; }
+    .content { max-width:900px; padding:40px; }
+    h1 { font-family:Georgia,serif; font-weight:normal; font-size:38px; border-bottom:1px solid #a2a9b1; margin-bottom:5px; }
+    h2 { font-family:Georgia,serif; font-weight:normal; border-bottom:1px solid #c8ccd1; margin-top:35px; }
+    table { width:100%; border-collapse:collapse; margin-top:25px; }
+    th,td { padding:10px; border:1px solid #a2a9b1; text-align:left; }
+    th { background:#eaecf0; }
+    .subtitle { font-size:13px; color:#54595d; margin-bottom:25px; }
+    .notice { margin-top:30px; padding:12px; background:#f8f9fa; border:1px solid #a2a9b1; font-size:14px; }
+    @media (max-width:700px) { .layout{display:block}.sidebar{display:none}.content{padding:20px} }
   </style>
 </head>
-
 <body>
-
-  <div class="topbar">
-    <div class="logo">BLACK RIDGE CASE WIKI</div>
-  </div>
-
+  <div class="topbar"><div class="logo">BLACK RIDGE CASE WIKI</div></div>
   <div class="layout">
-
     <aside class="sidebar">
       <a href="index.html">Main Page</a>
       <a href="static-tapes.html">The Static Tapes</a>
-      <a href="#">The Quiet Room</a>
-      <a href="#">Natalie Halverson</a>
+      <a href="quiet-room.html">The Quiet Room</a>
+      <a href="natalie-halverson.html">Natalie Halverson</a>
       <a href="#">Unheard Podcast</a>
       <a href="#">Evidence Archive</a>
       <a href="#">Recent Changes</a>
     </aside>
 
     <main class="content">
-
       <h1>The Static Tapes</h1>
+      <div class="subtitle">From Black Ridge Case Wiki</div>
 
-      <div class="subtitle">
-        From Black Ridge Case Wiki
-      </div>
-
-      <p>
-        The <strong>Static Tapes</strong> are five cassette recordings
-        associated with the Elias Voss investigation.
-      </p>
-
-      <p>
-        Each tape was recovered from a location connected to the case
-        and bears a handwritten label.
-      </p>
+      <p>The <strong>Static Tapes</strong> are five cassette recordings associated with the Elias Voss investigation.</p>
+      <p>Each tape was recovered from a location connected to the case and bears a handwritten label.</p>
 
       <table>
         <thead>
-          <tr>
-            <th>Evidence</th>
-            <th>Label</th>
-            <th>Recovery location</th>
-            <th>Status</th>
-          </tr>
+          <tr><th>Evidence</th><th>Label</th><th>Recovery location</th><th>Status</th></tr>
         </thead>
-
         <tbody>
-          <tr>
-            <td>BR-01</td>
-            <td>
-              <a href="./home-tape.html">HOME</a>
-            </td>
-            <td>Private residence</td>
-            <td>Archived</td>
-          </tr>
-
-          <tr>
-            <td>BR-02</td>
-            <td>LISTEN</td>
-            <td>Radio booth</td>
-            <td>Archived</td>
-          </tr>
-
-          <tr>
-            <td>BR-03</td>
-            <td>RINSE</td>
-            <td>Laundromat</td>
-            <td>Archived</td>
-          </tr>
-
-          <tr>
-            <td>BR-04</td>
-            <td>SIGNAL</td>
-            <td>Relay tower</td>
-            <td>Archived</td>
-          </tr>
-
-          <tr>
-            <td>BR-05</td>
-            <td>HUSH</td>
-            <td>Roadside memorial</td>
-            <td>Archived</td>
-          </tr>
+          <tr><td>BR-01</td><td><a href="home-tape.html">HOME</a></td><td>Private residence</td><td>Archived</td></tr>
+          <tr><td>BR-02</td><td>LISTEN</td><td>Radio booth</td><td>Archived</td></tr>
+          <tr><td>BR-03</td><td>RINSE</td><td>Laundromat</td><td>Archived</td></tr>
+          <tr><td>BR-04</td><td>SIGNAL</td><td>Relay tower</td><td>Archived</td></tr>
+          <tr><td>BR-05</td><td>HUSH</td><td>Roadside memorial</td><td>Archived</td></tr>
         </tbody>
       </table>
 
-      <div class="notice">
-        Select an evidence label to view the archived case file.
-      </div>
+      <div class="notice">Select an evidence label to view the archived case file.</div>
 
       <h2>See also</h2>
-
       <ul>
         <li><a href="index.html">Elias Nathaniel Voss</a></li>
+        <li><a href="quiet-room.html">The Quiet Room</a></li>
+        <li><a href="natalie-halverson.html">Natalie Halverson</a></li>
       </ul>
-
     </main>
-
   </div>
-
 </body>
 </html>
-```
