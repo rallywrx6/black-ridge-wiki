@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,6 +69,13 @@
       margin-bottom: 5px;
     }
 
+    h2 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      border-bottom: 1px solid #c8ccd1;
+      margin-top: 35px;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -89,6 +97,28 @@
       font-size: 13px;
       color: #54595d;
       margin-bottom: 25px;
+    }
+
+    .notice {
+      margin-top: 30px;
+      padding: 12px;
+      background: #f8f9fa;
+      border: 1px solid #a2a9b1;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .layout {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .content {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -130,48 +160,64 @@
       </p>
 
       <table>
-        <tr>
-          <th>Evidence</th>
-          <th>Label</th>
-          <th>Recovery location</th>
-          <th>Status</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Evidence</th>
+            <th>Label</th>
+            <th>Recovery location</th>
+            <th>Status</th>
+          </tr>
+        </thead>
 
-        <tr>
-          <td>BR-01</td>
-          <td><a href="home-tape.html">HOME</a></td>
-          <td>Private residence</td>
-          <td>Archived</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>BR-01</td>
+            <td>
+              <a href="./home-tape.html">HOME</a>
+            </td>
+            <td>Private residence</td>
+            <td>Archived</td>
+          </tr>
 
-        <tr>
-          <td>BR-02</td>
-          <td>LISTEN</td>
-          <td>Radio booth</td>
-          <td>Archived</td>
-        </tr>
+          <tr>
+            <td>BR-02</td>
+            <td>LISTEN</td>
+            <td>Radio booth</td>
+            <td>Archived</td>
+          </tr>
 
-        <tr>
-          <td>BR-03</td>
-          <td>RINSE</td>
-          <td>Laundromat</td>
-          <td>Archived</td>
-        </tr>
+          <tr>
+            <td>BR-03</td>
+            <td>RINSE</td>
+            <td>Laundromat</td>
+            <td>Archived</td>
+          </tr>
 
-        <tr>
-          <td>BR-04</td>
-          <td>SIGNAL</td>
-          <td>Relay tower</td>
-          <td>Archived</td>
-        </tr>
+          <tr>
+            <td>BR-04</td>
+            <td>SIGNAL</td>
+            <td>Relay tower</td>
+            <td>Archived</td>
+          </tr>
 
-        <tr>
-          <td>BR-05</td>
-          <td>HUSH</td>
-          <td>Roadside memorial</td>
-          <td>Archived</td>
-        </tr>
+          <tr>
+            <td>BR-05</td>
+            <td>HUSH</td>
+            <td>Roadside memorial</td>
+            <td>Archived</td>
+          </tr>
+        </tbody>
       </table>
+
+      <div class="notice">
+        Select an evidence label to view the archived case file.
+      </div>
+
+      <h2>See also</h2>
+
+      <ul>
+        <li><a href="index.html">Elias Nathaniel Voss</a></li>
+      </ul>
 
     </main>
 
@@ -179,3 +225,4 @@
 
 </body>
 </html>
+```
