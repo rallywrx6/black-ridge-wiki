@@ -1,0 +1,227 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natalie Halverson - Black Ridge Case Wiki</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #202122;
+    }
+
+    a {
+      color: #3366cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      border-bottom: 1px solid #a2a9b1;
+      padding: 18px 30px;
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .sidebar {
+      background: #f8f9fa;
+      min-height: 100vh;
+      border-right: 1px solid #c8ccd1;
+      padding: 30px 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .content {
+      max-width: 850px;
+      padding: 40px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 38px;
+      border-bottom: 1px solid #a2a9b1;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      border-bottom: 1px solid #c8ccd1;
+      margin-top: 35px;
+    }
+
+    .subtitle {
+      color: #54595d;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .notice {
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      padding: 15px;
+      margin: 25px 0;
+    }
+
+    .quote {
+      border-left: 4px solid #a2a9b1;
+      padding: 15px 20px;
+      margin: 25px 0;
+      background: #f8f9fa;
+      font-family: Georgia, serif;
+      font-size: 20px;
+    }
+
+    .restricted {
+      background: #fff3cd;
+      border: 1px solid #c8b46b;
+      padding: 15px;
+      margin-top: 25px;
+    }
+
+    .hidden-record {
+      display: none;
+      border: 1px solid #a2a9b1;
+      margin-top: 25px;
+      padding: 20px;
+      background: #ffffff;
+    }
+
+    button {
+      padding: 9px 15px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      .layout {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    BLACK RIDGE CASE WIKI
+  </div>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+      <a href="index.html">Main Page</a>
+      <a href="static-tapes.html">The Static Tapes</a>
+      <a href="#">The Quiet Room</a>
+      <a href="natalie-halverson.html">Natalie Halverson</a>
+      <a href="#">Unheard Podcast</a>
+      <a href="#">Evidence Archive</a>
+    </aside>
+
+    <main class="content">
+
+      <h1>Natalie Halverson</h1>
+
+      <div class="subtitle">
+        From Black Ridge Case Wiki
+      </div>
+
+      <p>
+        <strong>Natalie Halverson</strong> was connected to later investigations
+        concerning recordings associated with the Elias Voss case.
+      </p>
+
+      <p>
+        Several portions of her statements remain sealed or partially unavailable
+        in the public archive.
+      </p>
+
+      <div class="notice">
+        This article contains information compiled from incomplete archived records.
+      </div>
+
+      <h2>Recorded statement</h2>
+
+      <div class="quote">
+        “There was someone else listening.”
+      </div>
+
+      <p>
+        The context of this statement is disputed.
+      </p>
+
+      <div class="restricted">
+        <strong>ARCHIVE NOTICE</strong>
+        <p>
+          A related statement was removed from the public case file during a 2016 records review.
+        </p>
+
+        <button onclick="checkAccess()">
+          Check archive access
+        </button>
+      </div>
+
+      <div class="hidden-record" id="hidden-record">
+        <strong>Recovered fragment</strong>
+
+        <p>
+          Natalie reportedly warned investigators that playing the HOME recording
+          could reveal that the listener had heard it.
+        </p>
+
+        <p>
+          File reference:
+          <a href="home-tape.html">BR-01 — HOME</a>
+        </p>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    function checkAccess() {
+      const discovered =
+        localStorage.getItem("homeTapeDiscovered");
+
+      if (discovered === "true") {
+        document.getElementById("hidden-record").style.display =
+          "block";
+      } else {
+        alert(
+          "ACCESS DENIED\\n\\nRequired evidence has not been reviewed."
+        );
+      }
+    }
+  </script>
+
+</body>
+</html>
+```
