@@ -1,0 +1,585 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Quiet Room - Black Ridge Case Wiki</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #202122;
+    }
+
+    a {
+      color: #3366cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      border-bottom: 1px solid #a2a9b1;
+      padding: 18px 30px;
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .sidebar {
+      background: #f8f9fa;
+      min-height: 100vh;
+      border-right: 1px solid #c8ccd1;
+      padding: 30px 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .content {
+      max-width: 900px;
+      padding: 40px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 38px;
+      border-bottom: 1px solid #a2a9b1;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      border-bottom: 1px solid #c8ccd1;
+      margin-top: 35px;
+    }
+
+    .subtitle {
+      color: #54595d;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .scene {
+      position: relative;
+      height: 500px;
+      margin-top: 25px;
+      overflow: hidden;
+      border: 1px solid #72777d;
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.12),
+          rgba(0,0,0,0.25)
+        ),
+        #b8b8b0;
+    }
+
+    .wall {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          transparent 49%,
+          rgba(0,0,0,0.06) 50%,
+          transparent 51%
+        ),
+        linear-gradient(
+          transparent 49%,
+          rgba(0,0,0,0.05) 50%,
+          transparent 51%
+        );
+      background-size: 180px 120px;
+    }
+
+    .window {
+      position: absolute;
+      top: 70px;
+      right: 80px;
+      width: 190px;
+      height: 150px;
+      background: #565d61;
+      border: 8px solid #444;
+      box-shadow: inset 0 0 30px #111;
+    }
+
+    .plastic {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          125deg,
+          rgba(255,255,255,0.24),
+          rgba(255,255,255,0.24) 6px,
+          rgba(255,255,255,0.08) 7px,
+          rgba(255,255,255,0.08) 14px
+        );
+    }
+
+    .light {
+      position: absolute;
+      top: 28px;
+      left: 250px;
+      width: 280px;
+      height: 22px;
+      background: #f8f8df;
+      box-shadow: 0 0 35px #f8f8df;
+    }
+
+    .chair {
+      position: absolute;
+      left: 325px;
+      bottom: 72px;
+      width: 120px;
+      height: 120px;
+      border: 8px solid #554d43;
+      border-top: 18px solid #554d43;
+      background: #817768;
+    }
+
+    .recorder {
+      position: absolute;
+      left: 125px;
+      bottom: 75px;
+      width: 145px;
+      height: 72px;
+      background: #252525;
+      border: 4px solid #111;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .recorder::after {
+      content: "REC";
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      color: #c50000;
+      font-family: monospace;
+      font-size: 11px;
+    }
+
+    .tape {
+      position: absolute;
+      left: 525px;
+      bottom: 90px;
+      width: 85px;
+      height: 48px;
+      background: #171717;
+      border: 2px solid #000;
+    }
+
+    .tape::after {
+      content: "?";
+      position: absolute;
+      left: 17px;
+      right: 17px;
+      top: 12px;
+      padding: 4px;
+      text-align: center;
+      background: #ded5b7;
+      color: #222;
+      font-family: monospace;
+    }
+
+    .hotspot {
+      position: absolute;
+      border: 2px dashed rgba(255,255,255,0);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .hotspot:hover {
+      border-color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hotspot-recorder {
+      left: 112px;
+      bottom: 62px;
+      width: 170px;
+      height: 95px;
+    }
+
+    .hotspot-window {
+      top: 55px;
+      right: 65px;
+      width: 220px;
+      height: 180px;
+    }
+
+    .hotspot-light {
+      top: 15px;
+      left: 230px;
+      width: 320px;
+      height: 55px;
+    }
+
+    .hotspot-chair {
+      left: 305px;
+      bottom: 55px;
+      width: 160px;
+      height: 155px;
+    }
+
+    .hotspot-tape {
+      left: 510px;
+      bottom: 76px;
+      width: 115px;
+      height: 80px;
+    }
+
+    .instructions {
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      padding: 12px 15px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .evidence-panel {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+    }
+
+    .evidence-panel.visible {
+      display: block;
+    }
+
+    .evidence-id {
+      font-family: "Courier New", monospace;
+      color: #54595d;
+      font-size: 13px;
+    }
+
+    .contradiction {
+      display: none;
+      margin-top: 18px;
+      padding: 15px;
+      background: #fff3cd;
+      border-left: 4px solid #ac8d00;
+    }
+
+    .notification {
+      display: none;
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      padding: 15px 18px;
+      background: #202122;
+      color: white;
+      max-width: 320px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    }
+
+    .glitch {
+      animation: glitch 0.12s steps(2) 5;
+    }
+
+    @keyframes glitch {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(4px); }
+      75% { transform: translateX(-2px); }
+      100% { transform: translateX(0); }
+    }
+
+    @media (max-width: 700px) {
+      .layout {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .scene {
+        transform-origin: top left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    BLACK RIDGE CASE WIKI
+  </div>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+      <a href="index.html">Main Page</a>
+      <a href="static-tapes.html">The Static Tapes</a>
+      <a href="quiet-room.html">The Quiet Room</a>
+      <a href="natalie-halverson.html">Natalie Halverson</a>
+      <a href="#">Unheard Podcast</a>
+      <a href="#">Evidence Archive</a>
+      <a href="#">Recent Changes</a>
+    </aside>
+
+    <main class="content">
+
+      <h1>The Quiet Room</h1>
+
+      <div class="subtitle">
+        From Black Ridge Case Wiki
+      </div>
+
+      <p>
+        <strong>The Quiet Room</strong> is the informal name given to an
+        unidentified location connected to later investigations of the
+        Elias Voss case.
+      </p>
+
+      <p>
+        Archived descriptions repeatedly reference unfinished concrete,
+        fluorescent lighting, plastic covering a window, and a persistent
+        low-frequency room tone.
+      </p>
+
+      <h2>Crime scene photograph</h2>
+
+      <div class="instructions">
+        Click objects in the photograph to inspect evidence.
+      </div>
+
+      <div class="scene" id="scene">
+
+        <div class="wall"></div>
+
+        <div class="light"></div>
+
+        <div class="window">
+          <div class="plastic"></div>
+        </div>
+
+        <div class="chair"></div>
+
+        <div class="recorder"></div>
+
+        <div class="tape"></div>
+
+        <div
+          class="hotspot hotspot-recorder"
+          onclick="inspect('recorder')"
+          title="Inspect recorder">
+        </div>
+
+        <div
+          class="hotspot hotspot-window"
+          onclick="inspect('window')"
+          title="Inspect window">
+        </div>
+
+        <div
+          class="hotspot hotspot-light"
+          onclick="inspect('light')"
+          title="Inspect fluorescent fixture">
+        </div>
+
+        <div
+          class="hotspot hotspot-chair"
+          onclick="inspect('chair')"
+          title="Inspect chair">
+        </div>
+
+        <div
+          class="hotspot hotspot-tape"
+          onclick="inspect('tape')"
+          title="Inspect cassette">
+        </div>
+
+      </div>
+
+      <div class="evidence-panel" id="evidence-panel">
+        <div class="evidence-id" id="evidence-id"></div>
+        <h2 id="evidence-title"></h2>
+        <p id="evidence-text"></p>
+
+        <div class="contradiction" id="contradiction"></div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <div class="notification" id="notification"></div>
+
+  <script>
+    let inspected = new Set();
+
+    const evidence = {
+      recorder: {
+        id: "BR-044",
+        title: "Portable cassette recorder",
+        text:
+          "A portable cassette recorder photographed near the southwest wall. " +
+          "The device appears disconnected and contains no visible cassette."
+      },
+
+      window: {
+        id: "BR-071",
+        title: "Covered window",
+        text:
+          "A single window is covered from the interior with translucent plastic. " +
+          "The original purpose of the covering is unknown."
+      },
+
+      light: {
+        id: "BR-072",
+        title: "Fluorescent fixture",
+        text:
+          "Ceiling-mounted fluorescent lighting. Several archived audio files " +
+          "contain a similar electrical hum."
+      },
+
+      chair: {
+        id: "BR-073",
+        title: "Wooden chair",
+        text:
+          "A wooden chair positioned near the center of the room. No identifying " +
+          "marks are visible in the archived photograph."
+      },
+
+      tape: {
+        id: "UNLOGGED",
+        title: "Unidentified cassette",
+        text:
+          "A cassette is visible in the photograph. No corresponding evidence " +
+          "number appears in the public inventory."
+      }
+    };
+
+    function inspect(item) {
+      inspected.add(item);
+
+      const entry = evidence[item];
+
+      document.getElementById("evidence-panel")
+        .classList.add("visible");
+
+      document.getElementById("evidence-id")
+        .textContent = entry.id;
+
+      document.getElementById("evidence-title")
+        .textContent = entry.title;
+
+      document.getElementById("evidence-text")
+        .textContent = entry.text;
+
+      document.getElementById("contradiction")
+        .style.display = "none";
+
+      localStorage.setItem(
+        "quietRoomInspected",
+        JSON.stringify([...inspected])
+      );
+
+      if (item === "recorder") {
+        showContradiction();
+      }
+
+      if (inspected.size >= 4) {
+        unlockTape();
+      }
+    }
+
+    function showContradiction() {
+      const box =
+        document.getElementById("contradiction");
+
+      box.innerHTML =
+        "<strong>ARCHIVE DISCREPANCY</strong><br><br>" +
+        "The official Quiet Room article states that no recording equipment " +
+        "was recovered from this location.";
+
+      box.style.display =
+        "block";
+
+      notify(
+        "INVESTIGATION NOTE ADDED: BR-044 contradicts the official archive."
+      );
+    }
+
+    function unlockTape() {
+      const tape =
+        document.querySelector(".tape");
+
+      if (tape.dataset.unlocked === "true") return;
+
+      tape.dataset.unlocked =
+        "true";
+
+      document.getElementById("scene")
+        .classList.add("glitch");
+
+      setTimeout(function() {
+        document.getElementById("scene")
+          .classList.remove("glitch");
+      }, 700);
+
+      tape.innerHTML =
+        '<div style="' +
+        'position:absolute;' +
+        'left:12px;' +
+        'right:12px;' +
+        'top:11px;' +
+        'background:#ded5b7;' +
+        'padding:5px;' +
+        'text-align:center;' +
+        'font-family:monospace;' +
+        '">CLEAN</div>';
+
+      localStorage.setItem(
+        "cleanTapeSeen",
+        "true"
+      );
+
+      notify(
+        "The crime scene photograph was modified."
+      );
+    }
+
+    function notify(message) {
+      const box =
+        document.getElementById("notification");
+
+      box.textContent =
+        message;
+
+      box.style.display =
+        "block";
+
+      setTimeout(function() {
+        box.style.display =
+          "none";
+      }, 4500);
+    }
+  </script>
+
+</body>
+</html>
+```
